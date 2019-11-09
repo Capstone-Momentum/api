@@ -4,7 +4,7 @@ phases:
     runtime-versions:
         python: 3.7
     commands:
-        - pip -r requirements.txt
+        - pip install -r requirements.txt
   build:
     commands:
         - python main.py
