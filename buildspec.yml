@@ -7,4 +7,4 @@ phases:
         - pip install -r requirements.txt
   build:
     commands:
-        - python main.py
+        - flask run
