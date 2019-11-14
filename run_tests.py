@@ -1,11 +1,12 @@
 
 import unittest
 
-def run():
+def run(filename_pattern):
     loader = unittest.TestLoader()
-    tests = loader.discover('.')
+    tests = loader.discover('.', pattern=filename_pattern)
     testRunner = unittest.TextTestRunner()
     testRunner.run(tests)
 
 if __name__ == '__main__':
-    run()
+    run('test_logic*.py')
+    run('test_api*.py')
