@@ -9,4 +9,3 @@ class Query(ObjectType):
     @staticmethod
     def resolve_name(parent, info):
         return 'DataUSA Economic Data Can Be Returned Here'
-
