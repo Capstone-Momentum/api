@@ -5,9 +5,14 @@ import requests
 
 class MyTestCase(unittest.TestCase):
 
-    #mocking an API call and testing that the response is as expected
+    # mocking an API call and testing that the response is as expected
+    # see article for below structure: https://auth0.com/blog/mocking-api-calls-in-python/
     def test_APICall(self):
         """Mocking a whole function"""
+        """
+        This is an example of mocking the below function. Will need to be replaced
+        when we figure out which function we need to mock
+        """
         mock_get_patcher = patch('users.requests.get')
         users = [{
             "id": 0,
