@@ -8,3 +8,7 @@ phases:
   build:
     commands:
         - python3 run_tests.py
+
+artifacts:
+  files:
+    - '**/*'
