@@ -13,3 +13,8 @@ variables that exist for the given year in a table, then we can construct a quer
 and add the county/place predicates to get the data for those variables specific to slo county and the districts
 within it.
 
+To allow this scraper to automatically retrieve data when a new year's data is available we'll probably need to store
+the years we have data for from the census in a table. Then, when the Lambdas run (periodically checking whether it
+should scrape more data) it can simply check if the year after the most recent we have data for exists at the url
+constructed using this year.
+

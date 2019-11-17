@@ -62,7 +62,7 @@ def testing_census_api(year, vars):
     baseUrl = "https://api.census.gov/data/{}/acs/acs1".format(str(year))
     varsStr = ",".join(vars)
     tests = [
-        ('all_states', "{}?get=NAME,{}&for=state:*".format(baseUrl, varsStr)),
+        ('all states', "{}?get=NAME,{}&for=state:*".format(baseUrl, varsStr)),
         ('california', "{}?get=NAME,{}&for=state:06".format(baseUrl, varsStr)),
         ('slo', "{}?get=NAME,{}&for=county:079&in=state:06".format(baseUrl, varsStr))
     ]
