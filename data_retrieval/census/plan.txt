@@ -1,0 +1,15 @@
+
+The census exposes all of their data through api queries using variables that can be found in json format
+at this link... https://www.census.gov/data/developers/data-sets/acs-1year.2018.html
+Each year from 2011-2018 is exposed in this url and the json for the variables is exposed in the same
+way on those pages.
+The api offered by the census allows us to retrieve data specific to slo county and even at county/place
+overlaps using the following 'predicates', as they call them, at the end of the queries...
+- &for=county:079&in=state:06
+- &for=county:*&in=state:01+place:62328
+
+It seems viable for us to write a web scraper that goes through each of these pages (each year), store all
+variables that exist for the given year in a table, then we can construct a query for every single existing variable
+and add the county/place predicates to get the data for those variables specific to slo county and the districts
+within it.
+
