@@ -52,6 +52,9 @@ import json
 
 # Setup an AWS Lambda to run on a schedule: https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLambdaSchedule.html
 
+# This is free and took like 2 minutes to get from the census website so don't feel like we need to use an environment variable
+apikey = "59b58e145abf5f84f347813e3e52cca496db9a0f"
+
 def getDataFrame(endpoint):
     http = url.PoolManager()
     resp = http.request('GET', endpoint)
@@ -62,9 +65,9 @@ def testing_census_api(year, vars):
     baseUrl = "https://api.census.gov/data/{}/acs/acs1".format(str(year))
     varsStr = ",".join(vars)
     tests = [
-        ('all states', "{}?get=NAME,{}&for=state:*".format(baseUrl, varsStr)),
-        ('california', "{}?get=NAME,{}&for=state:06".format(baseUrl, varsStr)),
-        ('slo', "{}?get=NAME,{}&for=county:079&in=state:06".format(baseUrl, varsStr))
+        ('all states', "{}?get=NAME,{}&for=state:*&key={}".format(baseUrl, varsStr, apikey)),
+        ('california', "{}?get=NAME,{}&for=state:06&key={}".format(baseUrl, varsStr, apikey)),
+        ('slo', "{}?get=NAME,{}&for=county:079&in=state:06&key={}".format(baseUrl, varsStr, apikey))
     ]
     for test in tests:
         label, endpoint = test
