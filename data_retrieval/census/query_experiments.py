@@ -1,8 +1,5 @@
 
-import bs4
-import pandas as pd
-import urllib3 as url
-import json
+from data_retrieval.util import getDataFrame
 
 # API Key: 59b58e145abf5f84f347813e3e52cca496db9a0f
 # Available data summary: https://www.census.gov/data/developers/guidance/api-user-guide.Available_Data.html
@@ -54,12 +51,6 @@ import json
 
 # This is free and took like 2 minutes to get from the census website so don't feel like we need to use an environment variable
 apikey = "59b58e145abf5f84f347813e3e52cca496db9a0f"
-
-def getDataFrame(endpoint):
-    http = url.PoolManager()
-    resp = http.request('GET', endpoint)
-    data = json.loads(resp.data)
-    return pd.DataFrame(data)
 
 def testing_census_api(year, vars):
     baseUrl = "https://api.census.gov/data/{}/acs/acs1".format(str(year))
