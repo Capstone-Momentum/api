@@ -1,5 +1,6 @@
 
 from data_retrieval.util import getDataFrame
+from data_retrieval.census.constants import API_KEY
 
 # API Key: 59b58e145abf5f84f347813e3e52cca496db9a0f
 # Available data summary: https://www.census.gov/data/developers/guidance/api-user-guide.Available_Data.html
@@ -48,9 +49,6 @@ from data_retrieval.util import getDataFrame
 '''
 
 # Setup an AWS Lambda to run on a schedule: https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLambdaSchedule.html
-
-# This is free and took like 2 minutes to get from the census website so don't feel like we need to use an environment variable
-API_KEY = "59b58e145abf5f84f347813e3e52cca496db9a0f"
 
 def testing_census_api(year, vars):
     baseUrl = "https://api.census.gov/data/{}/acs/acs1".format(str(year))
