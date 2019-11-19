@@ -16,5 +16,5 @@ def create_table(args):
 
 def get_table(name):
     dynamodb = get_dynamodb()
-    dynamodb.Table(name)
+    return dynamodb.Table(name)
 
