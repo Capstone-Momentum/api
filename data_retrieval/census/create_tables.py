@@ -1,5 +1,5 @@
 
-import boto3
+from boto3_wrapper.dynamodb import create_table
 from constants.census.constants import ACS_TABLE_NAME_BASE, ACS_TABLE_TYPES
 
 # DynamoDB Data Types: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBMapper.DataTypes.html
@@ -8,9 +8,8 @@ def get_table_name(acs_table_type):
     return "{}_{}".format(ACS_TABLE_NAME_BASE, acs_table_type if (acs_table_type) else 'detailed')
 
 def create_acs_table(acs_table_type):
-    dynamodb = boto3.resource('dynamodb')
     tableName = get_table_name(acs_table_type)
-    table = dynamodb.create_table(
+    table = create_table(dict(
         TableName=tableName,
         KeySchema=[
             {
@@ -63,7 +62,7 @@ def create_acs_table(acs_table_type):
             'ReadCapacityUnits': 5,
             'WriteCapacityUnits': 5
         }
-    )
+    ))
 
     # Wait for table to be created
     # table.meta.client.get_waiter('table_exists').wait(TableName=tableName)

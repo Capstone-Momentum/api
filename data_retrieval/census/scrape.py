@@ -2,8 +2,8 @@
 import datetime
 import traceback
 import sys
-import boto3
 import json
+from boto3_wrapper.dynamodb import get_table
 from data_retrieval.util import get
 from data_retrieval.census.create_tables import get_table_name
 from constants.census.constants import ACS_TABLE_TYPES, ACS_TABLE_TYPES_PRE_2016, ACSTableItem, API_KEY
@@ -46,8 +46,7 @@ def scrape_acs_table_on_year(acs_table_type, year):
     varsKeys = list(vars.keys())
 
     # gain connection to the correct table
-    dynamodb = boto3.resource('dynamodb')
-    table = dynamodb.Table(get_table_name(acs_table_type))
+    table = get_table(get_table_name(acs_table_type))
     startTime = datetime.datetime.now()
 
     # insert into the db in batches to minimize the number of requests (max batch size is 5 for AWS Free Tier)
