@@ -106,7 +106,7 @@ def scrape_acs():
     #     for tableType in ACS_TABLE_TYPES:
     #         scrape_acs_table_on_year(tableType, year)
     for tableType in ACS_TABLE_TYPES_PRE_2016:
-        scrape_acs_table_on_year(tableType, 2015)
+        scrape_acs_table_on_year(tableType, 2014)
 
 if __name__ == '__main__':
     scrape_acs()
