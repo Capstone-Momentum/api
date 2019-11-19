@@ -1,6 +1,6 @@
 
 import boto3
-from data_retrieval.census.constants import ACS_TABLE_NAME_BASE, ACS_TABLE_TYPES
+from constants.census.constants import ACS_TABLE_NAME_BASE, ACS_TABLE_TYPES
 
 # DynamoDB Data Types: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBMapper.DataTypes.html
 

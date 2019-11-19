@@ -1,6 +1,6 @@
 
 from data_retrieval.util import getDataFrame
-from data_retrieval.census.constants import API_KEY
+from constants.census.constants import API_KEY
 
 # API Key: 59b58e145abf5f84f347813e3e52cca496db9a0f
 # Available data summary: https://www.census.gov/data/developers/guidance/api-user-guide.Available_Data.html
