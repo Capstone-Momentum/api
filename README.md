@@ -3,7 +3,7 @@
 ### Initial Steps
 On Windows, we recommend you install Git Bash via https://gitforwindows.org/.
 
-On Mac, we recommend you install Homebrew via https://brew.sh/, then you can  run `brew install git`.
+On Mac, we recommend you install Homebrew via https://brew.sh/, then you can run `brew install git`.
 
 All machines should have the latest version of Python installed via https://www.python.org/downloads/.
 
@@ -21,7 +21,7 @@ If `flask run` gives you an error saying that it cannot find a Flask App, run th
 ### Ensure that you can make a request
 Download Postman via https://www.getpostman.com/downloads/
 
-Or, download GraphIQL via ...
+Or, download GraphIQL via Homebrew and run `brew cask install graphiql`.
 
 Run `pip3 install awscli`
 
