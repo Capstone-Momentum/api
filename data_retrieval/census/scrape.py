@@ -6,7 +6,7 @@ import boto3
 import json
 from data_retrieval.util import get
 from data_retrieval.census.create_tables import get_table_name
-from constants.census.constants import ACS_TABLE_TYPES, ACSTableItem, API_KEY
+from constants.census.constants import ACS_TABLE_TYPES, ACS_TABLE_TYPES_PRE_2016, ACSTableItem, API_KEY
 
 '''
 This module holds the logic for scraping ACS (American Community Survey)
@@ -105,8 +105,8 @@ def scrape_acs():
     # for year in ACS_YEARS[5:]:
     #     for tableType in ACS_TABLE_TYPES:
     #         scrape_acs_table_on_year(tableType, year)
-    for tableType in ACS_TABLE_TYPES[1:]:
-        scrape_acs_table_on_year(tableType, 2018)
+    for tableType in ACS_TABLE_TYPES_PRE_2016:
+        scrape_acs_table_on_year(tableType, 2015)
 
 if __name__ == '__main__':
     scrape_acs()

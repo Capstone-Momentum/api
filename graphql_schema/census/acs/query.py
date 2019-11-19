@@ -13,7 +13,6 @@ class Query(ObjectType):
     @staticmethod
     def resolve_acs1_variable(parent, info, tableName, variableName, year):
         item = get_item(tableName, variableName, year)
-        print(item)
         return json.dumps(item, default=json_serialize) if (item) else None
 
 
