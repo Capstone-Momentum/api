@@ -1,11 +1,10 @@
 
-import boto3
+from boto3_wrapper.dynamodb import get_table
 from boto3.dynamodb.conditions import Key, Attr
 from constants.census.constants import ACSTableItem
 
 def get_item(tableName, variableName, year):
-    dynamodb = boto3.resource('dynamodb')
-    table = dynamodb.Table(tableName)
+    table = get_table(tableName)
     response = table.query(
         KeyConditionExpression=Key(ACSTableItem.VARIABLE_NAME.value).eq(variableName) & Key(ACSTableItem.YEAR.value).eq(year)
     )
