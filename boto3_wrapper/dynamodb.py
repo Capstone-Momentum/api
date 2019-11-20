@@ -7,8 +7,8 @@ from os import environ
 def get_dynamodb():
     return boto3.resource(
         'dynamodb',
-        # aws_access_key_id='',
-        # aws_secret_access_key='',
+        aws_access_key_id=environ['AWS_ACCESS_KEY_ID'],
+        aws_secret_access_key=environ['AWS_SECRET_ACCESS_KEY'],
         # region_name=''
     )
 
