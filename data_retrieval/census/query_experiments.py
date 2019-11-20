@@ -58,14 +58,15 @@ def testing_census_api(year, vars):
         ('california', "{}?get=NAME,{}&for=state:06&key={}".format(baseUrl, varsStr, API_KEY)),
         ('slo county', "{}?get=NAME,{}&for=county:079&in=state:06&key={}".format(baseUrl, varsStr, API_KEY))
     ]
-    for test in tests:
-        label, endpoint = test
-        summarize(label, getDataFrame(endpoint))
+    # for test in tests:
+    #     label, endpoint = test
+    #     summarize(label, getDataFrame(endpoint))
+    summarize('test', getDataFrame('https://api.census.gov/data/2017/acs/acs1?get=NAME,B00001_001E&for=county%20subdivision:*&in=state:06%20county:079'))
 
 def summarize(header, df):
     summary = "\n\n{}:\n\n{}".format(header, str(df))
     print(summary)
 
 if __name__ == '__main__':
-    testing_census_api(2018, ['B11001C_005E', 'C17007_001E'])
+    testing_census_api(2018, ['B24121_040E'])
 

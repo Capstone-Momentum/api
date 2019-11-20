@@ -2,12 +2,14 @@
 import boto3
 from os import environ
 
+# the hard coding of the credentials NEEDS TO CHANGE: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html
+
 def get_dynamodb():
     return boto3.resource(
         'dynamodb',
-        aws_access_key_id='AKIA2QNHZYF3UP4HMEXZ',
-        aws_secret_access_key='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',
-        region_name='us-east-2'
+        # aws_access_key_id='',
+        # aws_secret_access_key='',
+        # region_name=''
     )
 
 def create_table(args):
