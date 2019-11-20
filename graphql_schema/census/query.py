@@ -2,7 +2,7 @@
 import json
 from graphene import ObjectType, String, Int, List
 from graphene.types.json import JSONString
-from dbal.census.query import get_all_dataset_items
+from dbal.util import scan_table
 from dbal.util import json_serialize
 
 class DatasetItem(ObjectType):
@@ -23,5 +23,5 @@ class Query(ObjectType):
 
     @staticmethod
     def resolve_all_dataset_items(parent, info):
-        return json.dumps(get_all_dataset_items(), default=json_serialize)
+        return json.dumps(scan_table('census_datasets'), default=json_serialize)
 
