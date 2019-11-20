@@ -19,8 +19,9 @@ class DatasetItem(ObjectType):
 
 class Query(ObjectType):
     dataset_item = DatasetItem()
-    all_dataset_items = List(JSONString)
+    all_dataset_items = JSONString()
 
     @staticmethod
     def resolve_all_dataset_items(parent, info):
-        return json.dumps(get_all_dataset_items())
+        return json.dumps(get_all_dataset_items(), default=json_serialize)
+
