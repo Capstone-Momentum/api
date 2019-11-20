@@ -5,6 +5,8 @@ from os import environ
 # the hard coding of the credentials NEEDS TO CHANGE: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html
 
 def get_dynamodb():
+    print(environ['AWS_ACCESS_KEY_ID'])
+    print(environ['AWS_SECRET_ACCESS_KEY'])
     return boto3.resource(
         'dynamodb',
         aws_access_key_id=environ['AWS_ACCESS_KEY_ID'],
