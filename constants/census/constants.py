@@ -9,7 +9,7 @@ ACS_TABLE_TYPES_PRE_2016 = ['', 'subject', 'profile', 'cprofile']
 ACS_TABLE_TYPES = ['', 'subject', 'profile', 'cprofile', 'spp']
 ACS_YEARS = list(range(2011, 2019))
 
-# Table Item Attributes
+# ACS Table Item Attributes
 class ACSTableItem(Enum):
     VARIABLE_NAME = 'variable_name'
     GROUP = 'group'
@@ -19,4 +19,14 @@ class ACSTableItem(Enum):
     ATTRIBUTES = 'attributes'
     CALIFORNIA = 'california'
     SLO_COUNTY = 'slo_county'
+
+# Datasets Table Item Attributes
+class DatasetItem(Enum):
+    TITLE = 'title'
+    DATASETNAMES = 'dataset_names'
+    DESCRIPTION = 'description'
+    VINTAGE = 'vintage'
+    GEOGRAPHY_LINK = 'geography_link'
+    GROUPS_LINK = 'groups_link'
+    SOURCE_PATH = 'source_path'
 

@@ -1,56 +1,58 @@
 
-
 from boto3_wrapper.dynamodb import create_table
 from constants.census.constants import ACS_TABLE_NAME_BASE, ACS_TABLE_TYPES
 
 # DynamoDB Data Types: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBMapper.DataTypes.html
 
-def create_census_datasets_table():
-    tableName = 'census_datasets'
+def get_table_name(acs_table_type):
+    return "{}_{}".format(ACS_TABLE_NAME_BASE, acs_table_type if (acs_table_type) else 'detailed')
+
+def create_acs_table(acs_table_type):
+    tableName = get_table_name(acs_table_type)
     table = create_table(dict(
         TableName=tableName,
         KeySchema=[
             {
-                'AttributeName': 'title',
+                'AttributeName': 'variable_name',
                 'KeyType': 'HASH' # aka: the partition key (like primary key, but for NoSQL)
             },
             {
-                'AttributeName': 'dataset_names',
+                'AttributeName': 'year',
                 'KeyType': 'RANGE' # aka: the sort key (AWS store's the data in this order on their hardware)
             }
         ],
         AttributeDefinitions=[
             {
-                'AttributeName': 'title',
+                'AttributeName': 'variable_name',
                 'AttributeType': 'S'
             },
             {
-                'AttributeName': 'dataset_names',
-                'AttributeType': 'S'
+                'AttributeName': 'year',
+                'AttributeType': 'N'
             },
             # Columns that exist, but don't get defined in the schema:
             # {
-            #     'AttributeName': 'description',
+            #     'AttributeName': 'group',
             #     'AttributeType': 'S'
             # },
             # {
-            #     'AttributeName': 'vintage',
-            #     'AttributeType': 'N'
-            # },
-            # {
-            #     'AttributeName': 'geography_link',
+            #     'AttributeName': 'label',
             #     'AttributeType': 'S'
             # },
             # {
-            #     'AttributeName': 'variables_link',
+            #     'AttributeName': 'concept',
             #     'AttributeType': 'S'
             # },
             # {
-            #     'AttributeName': 'groups_link',
-            #     'AttributeType': 'S'
+            #     'AttributeName': 'attributes',
+            #     'AttributeType': 'SS'
             # },
             # {
-            #     'AttributeName': 'source_path',
+            #     'AttributeName': 'california',
+            #     'AttributeType': 'SS'
+            # },
+            # {
+            #     'AttributeName': 'slo_county',
             #     'AttributeType': 'SS'
             # },
         ],
@@ -66,7 +68,12 @@ def create_census_datasets_table():
     # table.meta.client.get_waiter('table_exists').wait(TableName=tableName)
 
 def create():
-    create_census_datasets_table()
+    for tableType in ACS_TABLE_TYPES:
+        try:
+            create_acs_table(tableType)
+        except:
+            continue
 
 if __name__ == '__main__':
     create()
+
