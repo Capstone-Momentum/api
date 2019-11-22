@@ -17,6 +17,7 @@ def scrape_dataset_definitions():
                     DatasetItem.DESCRIPTION.value: dataset['description'],
                     DatasetItem.VINTAGE.value: dataset['c_vintage'],
                     DatasetItem.GEOGRAPHY_LINK.value: dataset['c_geographyLink'],
+                    DatasetItem.VARIABLES_LINK.value: dataset['c_variablesLink'],
                     DatasetItem.GROUPS_LINK.value: dataset['c_groupsLink'],
                     DatasetItem.SOURCE_PATH.value: dataset['distribution'][0]['accessURL'].split('/')[5:]
                 }

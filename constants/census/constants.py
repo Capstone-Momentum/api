@@ -27,6 +27,7 @@ class DatasetItem(Enum):
     DESCRIPTION = 'description'
     VINTAGE = 'vintage'
     GEOGRAPHY_LINK = 'geography_link'
+    VARIABLES_LINK = 'variables_link'
     GROUPS_LINK = 'groups_link'
     SOURCE_PATH = 'source_path'
 
