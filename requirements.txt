@@ -8,7 +8,7 @@ Click==7.0
 coverage==4.5.4
 docutils==0.15.2
 Flask==1.1.1
-Flask-Cors==3.0.8
+Flask-Cors==3.0.9
 Flask-GraphQL==2.0.0
 graphene==2.1.8
 graphql-core==2.2.1
